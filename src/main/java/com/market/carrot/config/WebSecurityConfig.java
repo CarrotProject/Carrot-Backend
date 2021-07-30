@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    // 07.29 UserService 생성 전
+    // 07.29 UserService 생성 전.
     private final UserService userService;
 
     // 인증을 무시할 경로 설정
