@@ -42,6 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure (AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        // 패스워드 암호화
         authenticationManagerBuilder.userDetailsService(userService)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
