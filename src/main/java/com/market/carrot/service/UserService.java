@@ -2,9 +2,11 @@ package com.market.carrot.service;
 
 import com.market.carrot.domain.user.User;
 import com.market.carrot.domain.user.UserRepository;
+import com.market.carrot.web.dto.user.UserRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -15,5 +17,12 @@ public class UserService implements UserDetailsService {
     @Override
     public User loadUserByUsername(String email) throws UsernameNotFoundException {
         return userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(email));
+    }
+
+    public Long save(UserRequestDto userRequestDto) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        userRequestDto.setPassword(encoder.encode(userRequestDto.getPassword()));
+
+        return userRepository.save(userRequestDto.toEntity()).getCode();
     }
 }
