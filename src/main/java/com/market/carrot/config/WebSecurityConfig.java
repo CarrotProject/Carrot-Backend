@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure (HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers().permitAll() // 누구나 접근 허용
+                .antMatchers("/").permitAll() // 누구나 접근 허용
                 .antMatchers().hasRole("USER") // USER 접근 가능
                 .antMatchers().hasRole("ADMIN") // ADMIN 접근 가능
                 .anyRequest().authenticated() // 다른 요청들은 권한에 상관없이 권한이 있어야 함
