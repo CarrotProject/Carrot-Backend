@@ -1,5 +1,6 @@
 package com.market.carrot.domain.posts;
 
+import com.market.carrot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id  // 해당 테이블의 PK를 나타냄
     @GeneratedValue (strategy = GenerationType.IDENTITY)  // PK auto_increment
     private Long id;
