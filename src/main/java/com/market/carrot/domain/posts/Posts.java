@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Entity
 public class Posts extends BaseTimeEntity {
     // 2021.08.09 당긍마켓 글에 맞게 수정해야함
+    // 2021.08.10 이미지 저장을 어떻게 할지?
 
     @Id  // 해당 테이블의 PK를 나타냄
     @GeneratedValue (strategy = GenerationType.IDENTITY)  // PK auto_increment
