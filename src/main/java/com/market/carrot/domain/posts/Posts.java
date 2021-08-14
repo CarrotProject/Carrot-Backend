@@ -1,18 +1,19 @@
 package com.market.carrot.domain.posts;
 
 import com.market.carrot.domain.BaseTimeEntity;
+import com.market.carrot.domain.pictures.Pictures;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
 @Entity
 public class Posts extends BaseTimeEntity {
-    // 2021.08.09 당긍마켓 글에 맞게 수정해야함
-    // 2021.08.10 이미지 저장을 어떻게 할지?
 
     @Id  // 해당 테이블의 PK를 나타냄
     @GeneratedValue (strategy = GenerationType.IDENTITY)  // PK auto_increment
@@ -25,6 +26,10 @@ public class Posts extends BaseTimeEntity {
     private String content;
 
     private String author;
+
+    @OneToMany
+    @JoinColumn(name = "POST_PICTURES")
+    private List<Pictures> pictures = new ArrayList<>();
 
     @Builder
     public Posts (String title, String content, String author) {
