@@ -16,7 +16,7 @@ public class UserService implements UserDetailsService {
 
     @Override
     public User loadUserByUsername(String name) throws UsernameNotFoundException {
-        return userRepository.findByname(name).orElseThrow(() -> new UsernameNotFoundException(name));
+        return userRepository.findByName(name).orElseThrow(() -> new UsernameNotFoundException(name));
     }
 
     public Long save(UserRequestDto userRequestDto) {
