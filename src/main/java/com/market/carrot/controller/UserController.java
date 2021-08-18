@@ -18,7 +18,7 @@ public class UserController {
     private final UserService userService;
 
     // 회원가입 임시 주소
-    @PostMapping("/user")
+    @PostMapping("/api/user/join")
     public String signUp(UserRequestDto userRequestDto) {
         userService.save(userRequestDto);
 
