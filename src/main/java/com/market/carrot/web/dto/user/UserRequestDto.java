@@ -9,13 +9,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserRequestDto {
-    private String email;
+    private String name;
     private String password;
     private String auth;
 
     public User toEntity() {
         return User.builder()
-                .email(email)
+                .name(name)
                 .password(password)
                 .auth(auth)
                 .build();

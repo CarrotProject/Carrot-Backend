@@ -17,14 +17,18 @@ import java.util.Set;
 @Entity
 @Getter
 public class User implements UserDetails {
+    // 이름 휴대폰번호 비밀번호
 
     @Id
     @Column(name = "code")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long code;
 
-    @Column(name = "email", unique = true)
-    private String email;
+    @Column(name = "name", unique = true)
+    private String name;
+
+    @Column(name = "phone")
+    private String phone;
 
     @Column(name = "password")
     private String password;
@@ -33,8 +37,9 @@ public class User implements UserDetails {
     private String auth;
 
     @Builder
-    public User(String email, String password, String auth) {
-        this.email = email;
+    public User(String name, String phone, String password, String auth) {
+        this.name = name;
+        this.phone = phone;
         this.password = password;
         this.auth = auth;
     }
@@ -50,7 +55,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return name;
     }
 
     @Override
