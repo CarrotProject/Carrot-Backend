@@ -17,17 +17,16 @@ import java.util.Set;
 @Entity
 @Getter
 public class User implements UserDetails {
-    // 이름 휴대폰번호 비밀번호
 
     @Id
     @Column(name = "code")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long code;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "phone")
+    @Column(name = "phone", unique = true)
     private String phone;
 
     @Column(name = "password")
