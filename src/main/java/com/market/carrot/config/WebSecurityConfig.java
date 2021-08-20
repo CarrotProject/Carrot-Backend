@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // 인증을 무시할 경로 설정
     @Override
     public void configure(WebSecurity webSecurity) {
-        webSecurity.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/h2-console/**");
+        webSecurity.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/h2-console/**", "/api/**");
     }
 
     @Override
