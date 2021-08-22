@@ -19,10 +19,10 @@ public class UserService implements UserDetailsService {
         return userRepository.findByName(name).orElseThrow(() -> new UsernameNotFoundException(name));
     }
 
-    public Long save(UserRequestDto userRequestDto) {
+    public String save(UserRequestDto userRequestDto) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         userRequestDto.setPassword(encoder.encode(userRequestDto.getPassword()));
 
-        return userRepository.save(userRequestDto.toEntity()).getCode();
+        return userRepository.save(userRequestDto.toEntity()).getPhone();
     }
 }
