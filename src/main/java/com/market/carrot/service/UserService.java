@@ -2,7 +2,7 @@ package com.market.carrot.service;
 
 import com.market.carrot.domain.user.User;
 import com.market.carrot.domain.user.UserRepository;
-import com.market.carrot.web.dto.user.UserRequestDto;
+import com.market.carrot.web.dto.user.UserJoinRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,7 +19,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findByName(name).orElseThrow(() -> new UsernameNotFoundException(name));
     }
 
-    public String save(UserRequestDto userRequestDto) {
+    public String save(UserJoinRequestDto userRequestDto) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         userRequestDto.setPassword(encoder.encode(userRequestDto.getPassword()));
 
