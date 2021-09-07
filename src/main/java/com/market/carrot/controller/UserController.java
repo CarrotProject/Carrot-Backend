@@ -2,6 +2,7 @@ package com.market.carrot.controller;
 
 import com.market.carrot.service.UserService;
 import com.market.carrot.web.dto.user.UserJoinRequestDto;
+import com.market.carrot.web.dto.user.UserJoinResponseDto;
 import com.market.carrot.web.dto.user.UserLoginRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,8 +21,9 @@ public class UserController {
 
     // 회원가입 API
     @PostMapping("/api/user/join")
-    public String signUp(UserJoinRequestDto userJoinRequestDto) {
-        return "SUCCESS JOIN PHONE : " + userService.save(userJoinRequestDto);
+    public UserJoinResponseDto signUp(UserJoinRequestDto userJoinRequestDto) {
+        String successString = "SUCCESS JOIN PHONE : " + userService.save(userJoinRequestDto);
+        return new UserJoinResponseDto(successString);
     }
 
     // 로그인 API (아직 안됨...)
