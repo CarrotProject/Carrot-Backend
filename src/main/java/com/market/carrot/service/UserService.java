@@ -19,10 +19,10 @@ public class UserService implements UserDetailsService {
         return userRepository.findByPhone(phone).orElseThrow(() -> new UsernameNotFoundException(phone));
     }
 
-    public String save(UserJoinRequestDto userRequestDto) {
+    public String save(UserJoinRequestDto userJoinRequestDto) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        userRequestDto.setPassword(encoder.encode(userRequestDto.getPassword()));
+        userJoinRequestDto.setPassword(encoder.encode(userJoinRequestDto.getPassword()));
 
-        return userRepository.save(userRequestDto.toEntity()).getPhone();
+        return userRepository.save(userJoinRequestDto.toEntity()).getPhone();
     }
 }

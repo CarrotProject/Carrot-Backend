@@ -1,7 +1,8 @@
 package com.market.carrot.controller;
 
 import com.market.carrot.service.UserService;
-import com.market.carrot.web.dto.user.UserRequestDto;
+import com.market.carrot.web.dto.user.UserJoinRequestDto;
+import com.market.carrot.web.dto.user.UserLoginRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -17,15 +18,21 @@ import javax.servlet.http.HttpServletResponse;
 public class UserController {
     private final UserService userService;
 
-    // 회원가입 임시 주소
+    // 회원가입 API
     @PostMapping("/api/user/join")
-    public String signUp(UserRequestDto userRequestDto) {
-        return userService.save(userRequestDto);
+    public String signUp(UserJoinRequestDto userJoinRequestDto) {
+        return "SUCCESS JOIN PHONE : " + userService.save(userJoinRequestDto);
     }
 
-    @GetMapping(value = "/logout")
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+    // 로그인 API (아직 안됨...)
+    @PostMapping("/api/user/login")
+    public void login(UserLoginRequestDto userLoginRequestDto) {
+        System.out.println(userLoginRequestDto.getPhone());
+        System.out.println(userLoginRequestDto.getPassword());
+    }
+
+    @GetMapping(value = "/api/user/logout")
+    public void logoutPage(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-        return "redirect:/login";
     }
 }
